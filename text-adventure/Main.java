@@ -42,8 +42,45 @@ public class Main {
         System.out.println("\t3. Run");
 
         String input = in.nextLine();
-        
+        if (input.equals("1")) {
+          int damageDealt = rand.nextInt(attackDamage);
+          int damageTaken = rand.nextInt(enemyAttackDamage);
+
+          enemyHealth -= damageDealt;
+          health -= damageTaken;
+          System.out.print("\t> You strike the " + enemy + " for " + damageDealt + " damage.");
+          System.out.print("\t> You recieve " + damageTaken + " from " + enemy + ".");
+
+          if (health < 1) {
+            System.out.println("\t> You have taken too much damage, you died.");
+            break;
+          }
+
+        } else if (input.equals("2")) {
+          if(numHealthPotions > 0) {
+            health += healthPotionHealAmount;
+            numHealthPotions--;
+            System.out.println("\t>You drink a health potion, healing yourself for " + healthPotionHealAmount + ".\n\t>You have " + health + " health.");
+          } else {
+            System.out.println("\t>You have no remaining health potions.");
+          }
+        } else if (input.equals("3")) {
+          System.out.println("\t You run away from " + enemy);
+          continue GAME;
+        } else {
+          System.out.println("\tInvalid command");
+        }  
       }
+      if(health < 1) {
+        System.out.println("You black out and awake outside the dungeon.");
+        break;
+      }
+
+      System.out.println("----------------------");
+      System.out.println("  #  " + enemy + " was deffeated!  #  ");
+      System.out.println("  #  You have " + health + " HP left.  #  ");
+
+
     }
   }
 }

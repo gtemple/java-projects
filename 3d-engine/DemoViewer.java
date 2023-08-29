@@ -140,7 +140,7 @@ public class DemoViewer {
 
         int red = (int) Math.pow(redLinear, 1/2.4);
         int green = (int) Math.pow(greenLinear, 1/2.4);
-        int blue = (int) Math.pow(blueLinear, 1/2.4);
+        int blue = (int) Math.pow(blueLinear, 1/2.4); 
 
         return new Color(red, green, blue);
     }
